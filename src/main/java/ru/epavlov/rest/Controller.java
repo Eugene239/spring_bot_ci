@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
     @GetMapping("/")
     public String sas(){
-        return "jenkins test";
+        return "you mut die";
     }
 }
