@@ -33,7 +33,7 @@ public class BotImpl extends TelegramLongPollingBot implements TelegramBot {
     void init() {
         admins = new ArrayList<>();
         admins.addAll(Arrays.asList(admin.split(",")));
-        notifyAdmins("Started: " + name);
+        notifyAdmins("Started: " + name+" on:"+ System.getProperty("os.name").toLowerCase());
 
     }
 
@@ -81,7 +81,7 @@ public class BotImpl extends TelegramLongPollingBot implements TelegramBot {
 
     @PreDestroy
     void detroy() {
-        notifyAdmins("Stopped: " + name);
+        notifyAdmins("Stopped: " + name+" on:"+ System.getProperty("os.name").toLowerCase());
     }
 
 }
