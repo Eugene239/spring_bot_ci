@@ -41,10 +41,17 @@ public class BotImpl extends TelegramLongPollingBot implements TelegramBot {
     public void onUpdateReceived(Update update) {
         if (update.hasMessage()) {
             logger.debug(update.getMessage().getChatId() + " " + update.getMessage().getText());
+            sendUserMessage(new SendMessage(update.getMessage().getChatId(),update.getMessage().getText()));
         }
 
     }
-
+    public void sendUserMessage(SendMessage message){
+        try {
+            sendMessage(message);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public String getBotUsername() {
         return name;
