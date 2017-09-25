@@ -16,6 +16,5 @@ public class Controller {
     @GetMapping("/stop")
     public void stop(){
        System.exit(0);
-       //return "Application stopped";
     }
 }
