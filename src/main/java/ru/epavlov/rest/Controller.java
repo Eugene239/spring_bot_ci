@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
     @GetMapping("/")
     public String sas(){
-        return "greeting traveler";
+        return "greeting, from work place, traveler";
     }
+
     @GetMapping("/stop")
     public String stop(){
        System.exit(0);
