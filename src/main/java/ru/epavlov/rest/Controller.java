@@ -1,6 +1,8 @@
 package ru.epavlov.rest;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -9,8 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Controller {
     @GetMapping("/")
-    public String sas(){
-        return "greeting, from work place, traveler";
+    public String sas(Model model){
+        model.addAttribute("kek","privet");
+        return "index";
     }
 
     @GetMapping("/stop")

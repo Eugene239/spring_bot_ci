@@ -2,11 +2,13 @@ package ru.epavlov.bot;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
+import ru.epavlov.entity.MessageList;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -29,6 +31,9 @@ public class BotImpl extends TelegramLongPollingBot implements TelegramBot {
 
     private List<String> admins;
 
+    @Autowired
+    MessageList messageList;
+
     @PostConstruct
     void init() {
         admins = new ArrayList<>();
@@ -42,6 +47,7 @@ public class BotImpl extends TelegramLongPollingBot implements TelegramBot {
         if (update.hasMessage()) {
             logger.debug(update.getMessage().getChatId() + " " + update.getMessage().getText());
             sendUserMessage(new SendMessage(update.getMessage().getChatId(),update.getMessage().getText()));
+            messageList.pushMessage(update.getMessage().getChatId(),update.getMessage().getText());
         }
 
     }
