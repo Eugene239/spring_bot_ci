@@ -12,11 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class Controller {
     @GetMapping("/")
-    public ModelAndView sas(){
-        ModelAndView mav= new ModelAndView("index");
+    public String sas(Model model){
+        //ModelAndView mav= new ModelAndView("index");
         //mav.addAttribute("kek","privet");
-        mav.addObject("kek","privet");
-        return mav;
+      //  mav.addObject("kek","privet");
+       // return mav;
+        model.addAttribute("kek","privet");
+        return "index";
     }
 
     @GetMapping("/stop")
