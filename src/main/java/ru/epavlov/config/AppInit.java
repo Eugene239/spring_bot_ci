@@ -1,8 +1,13 @@
 package ru.epavlov.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import org.telegram.telegrambots.ApiContextInitializer;
 
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
+    static {
+        ApiContextInitializer.init();
+    }
+
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
