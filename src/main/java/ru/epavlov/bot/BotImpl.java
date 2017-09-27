@@ -1,7 +1,6 @@
 package ru.epavlov.bot;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
@@ -21,7 +20,6 @@ import java.util.List;
  */
 
 public class BotImpl extends TelegramLongPollingBot implements TelegramBot {
-    private static Logger logger = LoggerFactory.getLogger(BotImpl.class);
     @Value("${track.key}")
     private String botToken;
     @Value("${bot.admins}")
@@ -45,7 +43,7 @@ public class BotImpl extends TelegramLongPollingBot implements TelegramBot {
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage()) {
-            logger.debug(update.getMessage().getChatId() + " " + update.getMessage().getText());
+           // logger.debug(update.getMessage().getChatId() + " " + update.getMessage().getText());
             sendUserMessage(new SendMessage(update.getMessage().getChatId(),update.getMessage().getText()));
             messageList.pushMessage(update.getMessage().getChatId(),update.getMessage().getText());
         }

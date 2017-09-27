@@ -5,11 +5,11 @@
        xsi:schemaLocation = "http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="bot" class="ru.epavlov.bot.BotImpl"/>
-    <bean id = "botInit" class = "ru.epavlov.bot.BotInit">
+    <!--<bean id="bot" class="ru.epavlov.bot.BotImpl"/>-->
+    <!--<bean id = "botInit" class = "ru.epavlov.bot.BotInit"/>-->
         <!--<property name="bot" ref="bot"/>-->
         <!-- collaborators and configuration for this bean go here -->
-    </bean>
+
 
 
 </beans>

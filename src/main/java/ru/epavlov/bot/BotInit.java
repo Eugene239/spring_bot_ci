@@ -12,7 +12,6 @@ import javax.annotation.PreDestroy;
 /**
  * Created by Eugene on 24.09.2017.
  */
-@Service
 public class BotInit {
     private TelegramBotsApi telegramBotsApi;
 
