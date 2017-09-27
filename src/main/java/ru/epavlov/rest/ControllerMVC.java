@@ -18,7 +18,7 @@ public class ControllerMVC {
         //mav.addAttribute("kek","privet");
       //  mav.addObject("kek","privet");
        // return mav;
-        model.addAttribute("kek","privet");
+        model.addAttribute("kek","zdorovo");
         return "index";
     }
 
