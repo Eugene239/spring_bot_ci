@@ -7,6 +7,10 @@
     <title>okauto-barrier</title>
 </head>
 <body>
-<h1>${kek}</h1>
+<ul>
+<c:forEach items="${list}" var="item">
+    <li>${item}</li>
+</c:forEach>
+</ul>
 </body>
 </html>
