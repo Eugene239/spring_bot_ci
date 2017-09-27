@@ -4,13 +4,14 @@
 
 <html>
 <head>
-    <title>okauto-barrier</title>
+    <title>spring_bot</title>
 </head>
 <body>
-<ul>
-<c:forEach items="${list}" var="item">
-    <li>${item}</li>
-</c:forEach>
-</ul>
+    <c:import url="head.jsp"/>
+    <ul>
+    <c:forEach items="${list}" var="item">
+        <li>${item}</li>
+    </c:forEach>
+    </ul>
 </body>
 </html>
