@@ -1,1 +1,1 @@
-<h6>version: 1.00</h6>
+<h6>version: ${version}</h6>

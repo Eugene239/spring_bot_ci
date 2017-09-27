@@ -8,9 +8,11 @@
 </head>
 <body>
     <c:import url="head.jsp"/>
+    <br>
+    ${size}
     <ul>
     <c:forEach items="${list}" var="item">
-        <li>${item}</li>
+        <li>${item.id} ${item.status}</li>
     </c:forEach>
     </ul>
 </body>
