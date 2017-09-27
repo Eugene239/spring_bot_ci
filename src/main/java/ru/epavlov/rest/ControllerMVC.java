@@ -1,7 +1,6 @@
 package ru.epavlov.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +13,8 @@ import ru.epavlov.entity.MessageList;
 public class ControllerMVC {
     @Autowired
     MessageList messageList;
-    @Value("bot_version")
-    String version;
+//    @Value("bot_version")
+//    String version;
     
     @GetMapping("/")
     public String sas(Model model){
@@ -24,7 +23,7 @@ public class ControllerMVC {
       //  mav.addObject("kek","privet");
        // return mav;
         model.addAttribute("list",messageList.getList());
-        model.addAttribute("version",version);
+     //   model.addAttribute("version",version);
         return "index";
     }
 
