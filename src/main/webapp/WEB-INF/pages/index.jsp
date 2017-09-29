@@ -14,18 +14,22 @@
         <th>id</th>
         <th>status</th>
         <th>text</th>
+        <th>last_modify</th>
+        <th>time</th>
         <th>users</th>
         </thead>
         <tbody id="tbody">
         <c:forEach items="${list}" var="item">
             <tr>
-                  <td>${item.id}</td>
-                  <td>${item.status}</td>
-                  <td>${item.text}</td>
+                <td>${item.id}</td>
+                <td>${item.status}</td>
+                <td>${item.text}</td>
+                <th>${item.last_modify}</th>
+                <th>${item.time}</th>
                 <td>
                     <ul>
-                        <c:forEach items="${item.users}" var="entry">
-                            <li>${entry.value}</li>
+                        <c:forEach items="${item.users.values()}" var="entry">
+                            <li>${entry}</li>
                         </c:forEach>
                     </ul>
                 </td>
@@ -35,11 +39,11 @@
     </table>
 </div>
 
-    <br>
-    ${size}
-    <ul>
+<br>
+${size}
+<ul>
 
-    </ul>
+</ul>
 </body>
 
 <c:import url="bootstrap.jsp"/>
