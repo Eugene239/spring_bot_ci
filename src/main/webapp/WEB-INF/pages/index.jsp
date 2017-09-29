@@ -4,10 +4,21 @@
 
 <html>
 <head>
-    <title>spring_bot</title>
+    <c:import url="head.jsp"/>
 </head>
 <body>
-    <c:import url="head.jsp"/>
+
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead style="background-color: #1d1e1f; color: white">
+        <th>Время</th>
+        <th>Номер заказа</th>
+        <th width="5%"> Удалить</th>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+    </table>
+</div>
     <br>
     ${size}
     <ul>
@@ -16,4 +27,6 @@
     </c:forEach>
     </ul>
 </body>
+
+<c:import url="bootstrap.jsp"/>
 </html>
