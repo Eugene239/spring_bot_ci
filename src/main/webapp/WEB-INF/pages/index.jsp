@@ -24,8 +24,8 @@
                 <td>${item.id}</td>
                 <td>${item.status}</td>
                 <td>${item.text}</td>
-                <th>${item.last_modify}</th>
-                <th>${item.time}</th>
+                <td>${item.last_modify}</td>
+                <td>${item.time}</td>
                 <td>
                     <ul>
                         <c:forEach items="${item.users.values()}" var="entry">
