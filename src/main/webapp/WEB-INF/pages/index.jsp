@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" style="width: 100%;">
     <table class="table table-striped table-bordered">
         <thead style="background-color: #1d1e1f; color: white">
         <th>id</th>
@@ -24,8 +24,8 @@
                 <td>${item.id}</td>
                 <td>${item.status}</td>
                 <td>${item.text}</td>
-                <td width="15%">${item.last_modify}</td>
-                <td width="15%">${item.time}</td>
+                <td>${item.last_modify}</td>
+                <td>${item.time}</td>
                 <td>
                     <ul>
                         <c:forEach items="${item.users.values()}" var="entry">
