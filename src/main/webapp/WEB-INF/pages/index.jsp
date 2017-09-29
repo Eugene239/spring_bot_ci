@@ -11,20 +11,26 @@
 <div class="container">
     <table class="table table-striped table-bordered">
         <thead style="background-color: #1d1e1f; color: white">
-        <th>Время</th>
-        <th>Номер заказа</th>
-        <th width="5%"> Удалить</th>
+        <th>id</th>
+        <th>status</th>
+        <th>text</th>
         </thead>
         <tbody id="tbody">
+        <c:forEach items="${list}" var="item">
+            <tr>
+                  <td>${item.id}</td>
+                  <td>${item.status}</td>
+                  <td>${item.text}</td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>
+
     <br>
     ${size}
     <ul>
-    <c:forEach items="${list}" var="item">
-        <li>${item.id} ${item.status}</li>
-    </c:forEach>
+
     </ul>
 </body>
 
