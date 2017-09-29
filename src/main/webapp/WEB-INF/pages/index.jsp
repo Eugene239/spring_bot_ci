@@ -14,6 +14,7 @@
         <th>id</th>
         <th>status</th>
         <th>text</th>
+        <th>users</th>
         </thead>
         <tbody id="tbody">
         <c:forEach items="${list}" var="item">
@@ -21,6 +22,13 @@
                   <td>${item.id}</td>
                   <td>${item.status}</td>
                   <td>${item.text}</td>
+                <td>
+                    <ul>
+                        <c:forEach items="${item.users}" var="entry">
+                            <li>${entry.value}</li>
+                        </c:forEach>
+                    </ul>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
