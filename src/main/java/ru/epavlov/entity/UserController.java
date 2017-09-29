@@ -24,7 +24,7 @@ public class UserController implements Controller<UserBot, Long> {
     @Override
     public CompletableFuture<UserBot> get(Long aLong) {
         CompletableFuture<UserBot> future = new CompletableFuture<>();
-        firebaseDatabase.getReference("User").addListenerForSingleValueEvent(new ValueEventListener() {
+        firebaseDatabase.getReference("User/"+aLong).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())

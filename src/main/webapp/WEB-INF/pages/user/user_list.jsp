@@ -4,35 +4,28 @@
 
 <html>
 <head>
-    <c:import url="head.jsp"/>
+    <c:import url="../head.jsp"/>
 </head>
 <body>
-
 <div class="container" style="width: 100%;">
     <table class="table table-striped table-bordered">
         <thead style="background-color: #1d1e1f; color: white">
         <th>id</th>
-        <th>status</th>
-        <th width="20%">text</th>
-        <th>last_modify</th>
-        <th>time</th>
-        <th>users</th>
+        <th>first_name</th>
+        <th >last_name</th>
+        <th>createdTime</th>
+        <th>active</th>
+        <th>tracks</th>
         </thead>
         <tbody id="tbody">
-        <c:forEach items="${list}" var="item">
-            <c:set var="track" value="${item}" scope="request"/>
-            <jsp:include page="track/track_list_ui.jsp"/>
+        <c:forEach var="item" items="${userList}">
+            <c:set var="user" value="${item}" scope="request"/>
+            <jsp:include page="user_item_list.jsp"/>
         </c:forEach>
         </tbody>
     </table>
 </div>
 
-<br>
-${size}
-<ul>
-
-</ul>
 </body>
-
-<c:import url="bootstrap.jsp"/>
+<c:import url="../bootstrap.jsp"/>
 </html>

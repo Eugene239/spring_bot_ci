@@ -83,4 +83,18 @@ public class UserBot {
     public void setTrackList(HashMap<String, UserTrack> trackList) {
         this.trackList = trackList;
     }
+
+    @Override
+    public String toString() {
+        return "UserBot{" +
+                "id=" + id +
+                ", user_name='" + user_name + '\'' +
+                ", createdTime='" + createdTime + '\'' +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", active=" + active +
+                ", lastMessageTime='" + lastMessageTime + '\'' +
+                ", trackList=" + trackList +
+                '}';
+    }
 }

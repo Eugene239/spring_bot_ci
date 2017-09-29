@@ -1,0 +1,16 @@
+td, th{
+    text-align: center;
+}
+.track_list{
+    display:  inline-block;
+    background: wheat;
+    width: 20%;
+    height: auto;
+}
+
+.user_ref{
+    cursor: pointer;
+}
+.track_ref{
+    cursor: pointer;
+}
