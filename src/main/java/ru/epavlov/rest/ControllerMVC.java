@@ -11,7 +11,6 @@ import ru.epavlov.entity.TrackController;
 import ru.epavlov.entity.UserBot;
 import ru.epavlov.entity.UserController;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
@@ -59,8 +58,8 @@ public class ControllerMVC {
                 .join()
                 .stream()
                 .filter(userBot ->userBot.isActive() &&  userBot.getTrackList().size()>0)
+                .sorted((o1, o2) -> Long.compare(o2.getTrackList().size(),o1.getTrackList().size()))
                 .collect(Collectors.toList());
-        list.sort(Comparator.comparingLong(o -> o.getTrackList().size()));
         model.addAttribute("userList",list);
         return "user/user_list";
     }
