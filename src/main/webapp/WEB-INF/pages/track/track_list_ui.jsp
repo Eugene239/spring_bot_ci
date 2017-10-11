@@ -15,6 +15,11 @@
             </c:forEach>
         </ul>
     </td>
+    <td>
+        <button onclick="deleteTerm('${track.id}')"
+                class="btn btn-danger" style="margin: auto; display: table; cursor: pointer">X
+        </button>
+    </td>
 </tr>
 
 <%--<div class="container" style="width: 100%;height: 90px;  border: solid #000000 2px; vertical-align: middle">--%>
