@@ -7,6 +7,7 @@ import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
+import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
 import ru.epavlov.entity.MessageList;
 
 import javax.annotation.PostConstruct;
@@ -19,7 +20,8 @@ import java.util.List;
  * Created by Eugene on 24.09.2017.
  */
 
-public class BotImpl extends TelegramLongPollingBot implements TelegramBot {
+public class TrackBot extends TelegramLongPollingBot implements TelegramBot {
+
     @Value("${track.key}")
     private String botToken;
     @Value("${bot.admins}")
@@ -32,12 +34,15 @@ public class BotImpl extends TelegramLongPollingBot implements TelegramBot {
     @Autowired
     MessageList messageList;
 
+    @Autowired
+    BotInit botInit;
+
     @PostConstruct
     void init() {
+        botInit.addBot(this);
         admins = new ArrayList<>();
         admins.addAll(Arrays.asList(admin.split(",")));
         notifyAdmins("Started: " + name+" on:"+ System.getProperty("os.name").toLowerCase());
-
     }
 
     @Override

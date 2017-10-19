@@ -6,38 +6,39 @@ import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
+import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
+import org.telegram.telegrambots.generics.LongPollingBot;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Eugene on 24.09.2017.
  */
 public class BotInit {
-
-    private final TelegramLongPollingBot bot;
+    private TelegramBotsApi api;
+    private List<TelegramLongPollingBot> botList;
 
     @PostConstruct
     private void init(){
+        api = new TelegramBotsApi();
+        botList = new ArrayList<>();
+    }
 
-        TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
+
+    public void addBot(TelegramLongPollingBot telegramLongPollingBot){
         try {
-            telegramBotsApi.registerBot(bot);
-        }catch (TelegramApiException e){
+            api.registerBot(telegramLongPollingBot);
+            botList.add(telegramLongPollingBot);
+        } catch (TelegramApiRequestException e) {
             e.printStackTrace();
         }
     }
 
-    @Autowired
-    public BotInit(TelegramLongPollingBot bot) {
-        this.bot = bot;
-    }
-
-
-
-
     @PreDestroy
     private void destroy(){
-        bot.onClosing();
+        botList.forEach(LongPollingBot::onClosing);
     }
 }
