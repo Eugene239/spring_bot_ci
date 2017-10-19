@@ -39,9 +39,9 @@ public class TrackBot extends TelegramLongPollingBot implements TelegramBot {
 
     @PostConstruct
     void init() {
-        botInit.addBot(this);
         admins = new ArrayList<>();
         admins.addAll(Arrays.asList(admin.split(",")));
+        botInit.addBot(this);
     }
 
     @Override
