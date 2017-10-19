@@ -42,7 +42,6 @@ public class TrackBot extends TelegramLongPollingBot implements TelegramBot {
         botInit.addBot(this);
         admins = new ArrayList<>();
         admins.addAll(Arrays.asList(admin.split(",")));
-        notifyAdmins("Started: " + name+" on:"+ System.getProperty("os.name").toLowerCase());
     }
 
     @Override
@@ -91,6 +90,7 @@ public class TrackBot extends TelegramLongPollingBot implements TelegramBot {
     @PreDestroy
     void detroy() {
         notifyAdmins("Stopped: " + name+" on:"+ System.getProperty("os.name").toLowerCase());
+        this.onClosing();
     }
 
 }

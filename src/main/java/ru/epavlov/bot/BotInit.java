@@ -28,17 +28,14 @@ public class BotInit {
     }
 
 
-    public void addBot(TelegramLongPollingBot telegramLongPollingBot){
+    public void addBot(TrackBot trackBot){
         try {
-            api.registerBot(telegramLongPollingBot);
-            botList.add(telegramLongPollingBot);
+            api.registerBot(trackBot);
+            botList.add(trackBot);
+            trackBot.notifyAdmins("Started: " + trackBot.getBotUsername()+" on:"+ System.getProperty("os.name").toLowerCase());
         } catch (TelegramApiRequestException e) {
             e.printStackTrace();
         }
     }
 
-    @PreDestroy
-    private void destroy(){
-        botList.forEach(LongPollingBot::onClosing);
-    }
 }
