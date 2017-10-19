@@ -28,7 +28,9 @@
         </tbody>
     </table>
 </div>
+    <table id="kek">
 
+    </table>
 <br>
 ${size}
 <ul>
@@ -39,9 +41,15 @@ ${size}
 <c:import url="bootstrap.jsp"/>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="/resources/js/restJs.js"></script>
 <script>
     $(document).ready(function () {
         table=  $('#myTable').DataTable();
+        var rest= new Rest();
+        rest.GET=window.location.href+"track";
+        rest.table=$('#kek');
+        rest.fields=["id","status","parserCode"];
+        rest.restGet();
     });
 
     function deleteTerm(track_id) {
@@ -57,5 +65,8 @@ ${size}
             }
         });
     }
+
+
 </script>
+
 </html>
