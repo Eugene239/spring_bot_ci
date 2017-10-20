@@ -53,7 +53,7 @@ ${size}
 
     function deleteTerm(track_id) {
         $.ajax({
-            url: window.location.href + "delete?trackId=" + track_id,
+            url: window.location.href + "track?trackId=" + track_id,
             type: 'DELETE',
             success: function (response) {
                 location.reload();
