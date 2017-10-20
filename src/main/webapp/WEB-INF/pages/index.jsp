@@ -46,7 +46,6 @@ ${size}
     $(document).ready(function () {
         table=  $('#myTable').DataTable();
         var rest= new Rest();
-        rest.GET=window.location.href+"track";
         rest.table=$('#kek');
         rest.fields=["id","status","parserCode"];
         rest.restGet();

@@ -2,7 +2,7 @@ function Rest() {
     this.data = [];
     this.fields = [];
 
-    this.GET = "";
+    this.GET = getContextPath()+"track";
     this.DELETE = "";
     this.UPDATE = "";
     this.CREATE = "";
@@ -34,4 +34,7 @@ function Rest() {
         }
         return elements;
     }
+}
+function getContextPath() {
+    return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
 }
