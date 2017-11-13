@@ -35,15 +35,10 @@ public class ControllerMVC {
     
     @GetMapping("/")
     public String main(Model model) throws InterruptedException, ExecutionException, TimeoutException {
-        //ModelAndView mav= new ModelAndView("index");
-        //mav.addAttribute("kek","privet");
-      //  mav.addObject("kek","privet");
-       // return mav;
         List<Track> list = trackController.getList().join();
         model.addAttribute("version",version);
         model.addAttribute("list",list);
         model.addAttribute("size",list.size());
-     //   model.addAttribute("version",version);
         return "index";
     }
     @GetMapping("/trackList")
