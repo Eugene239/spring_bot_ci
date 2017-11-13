@@ -4,12 +4,18 @@
 
 <html>
 <head>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="/resources/js/restJs.js"></script>
     <c:import url="head.jsp"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 </head>
 <body>
 
 <div class="container" style="width: 100%;">
+    <button class="btn btn-danger" onclick="deleteUNUSED()">DELETE UNUSED </button>
+    <button class="btn btn-danger" onclick="deleteSIGNIN()">DELETE SIGNIN </button>
+
     <table id="myTable" class="table table-striped table-bordered">
         <thead style="background-color: #1d1e1f; color: white">
         <th>id</th>
@@ -39,9 +45,6 @@ ${size}
 </body>
 
 <c:import url="bootstrap.jsp"/>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<script src="/resources/js/restJs.js"></script>
 <script>
     $(document).ready(function () {
         table=  $('#myTable').DataTable();
@@ -58,6 +61,30 @@ ${size}
             success: function (response) {
                 location.reload();
                 //console.log(response);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    function deleteUNUSED() {
+        $.ajax({
+            url: window.location.href + "track/deleteUNUSED",
+            type: 'DELETE',
+            success: function (response) {
+                location.reload();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    function deleteSIGNIN() {
+        $.ajax({
+            url: window.location.href + "track/deleteSIGNIN",
+            type: 'DELETE',
+            success: function (response) {
+                location.reload();
             },
             error: function (error) {
                 console.log(error);
