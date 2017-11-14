@@ -26,7 +26,7 @@ public class Schedule {
     StatisticController controller;
 
    // @Scheduled(cron = "*/10 * * * * *") //every 10 seconds
-    @Scheduled(cron = "0 * * * * *") //every 1 hour
+    @Scheduled(cron = "0 0 * * * *") //every 1 hour
     private void getStatistic(){
         Statistic statistic =new Statistic();
         statistic.setTrackCnt(trackController.getList().join().size());

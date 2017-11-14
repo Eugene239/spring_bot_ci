@@ -24,8 +24,33 @@ public class StatisticController {
     private FirebaseDatabase firebaseDatabase;
 
     public  void save(Statistic statistic){
-        log.debug("save: "+statistic.toString());
-        firebaseDatabase.getReference(PATH).push().setValue(statistic);
+        log.debug("start saving: "+statistic.toString());
+        //get last value
+        firebaseDatabase.getReference().child(PATH).orderByKey().limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+
+                    log.debug("last statistic: " + dataSnapshot.getValue().toString());
+                    Statistic lastValue = dataSnapshot.getChildren().iterator().next().getValue(Statistic.class);
+                    if (lastValue.getUserCnt() != statistic.getUserCnt() || lastValue.getTrackCnt() != statistic.getTrackCnt()) {
+                        firebaseDatabase.getReference(PATH).push().setValue(statistic);
+                        log.debug("added new statistic");
+                    } else {
+                        log.debug("no changes");
+                    }
+                }else{
+                    log.debug("creating first stat");
+                    firebaseDatabase.getReference(PATH ).push().setValue(statistic);
+                    log.debug("saved");
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                log.error(databaseError.getMessage(), databaseError.toException());
+            }
+        });
+
     }
     public  CompletableFuture<List<Statistic>> getList(){
         log.debug("getList");

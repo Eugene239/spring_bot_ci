@@ -42,7 +42,7 @@ public class Statistic {
         return "Statistic{" +
                 "userCnt=" + userCnt +
                 ", trackCnt=" + trackCnt +
-                ", localDateTime=" + localDateTime +
+                ", localDateTime=" + localDateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) +
                 '}';
     }
 }
