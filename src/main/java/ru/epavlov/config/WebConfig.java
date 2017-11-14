@@ -6,6 +6,7 @@ import com.google.firebase.auth.FirebaseCredentials;
 import com.google.firebase.database.FirebaseDatabase;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -20,6 +21,7 @@ import java.io.InputStream;
 @ComponentScan("ru.epavlov")
 @PropertySource("classpath:application.properties")
 @ImportResource("classpath:spring.xml")
+@EnableScheduling
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override

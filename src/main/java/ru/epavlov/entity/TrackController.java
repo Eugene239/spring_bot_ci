@@ -4,6 +4,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +18,7 @@ import java.util.concurrent.CompletableFuture;
  */
 @Repository
 public class TrackController implements Controller<Track,String> {
+    private static final Logger log = LogManager.getLogger(TrackController.class);
     @Autowired
     FirebaseDatabase firebaseDatabase;
     @Autowired
@@ -83,7 +86,7 @@ public class TrackController implements Controller<Track,String> {
                         list.add(trackSnapshot.getValue(Track.class));
                     }
                     catch (Exception e){
-                        e.printStackTrace();
+                       log.error(e.getMessage().concat("\n"+trackSnapshot.getValue().toString()+"\n"),e);
                     }
                 });
 

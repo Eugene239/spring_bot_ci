@@ -97,4 +97,18 @@ public class Track {
         setParserCode(track.getParserCode());
         setStatus(track.getStatus());
     }
+
+    @Override
+    public String toString() {
+        return "Track{" +
+                "id='" + id + '\'' +
+                ", status='" + status + '\'' +
+                ", parserCode=" + parserCode +
+                ", text='" + text + '\'' +
+                ", last_modify='" + last_modify + '\'' +
+                ", last_check='" + last_check + '\'' +
+                ", time='" + time + '\'' +
+                ", users=" + users +
+                '}';
+    }
 }

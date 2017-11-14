@@ -41,9 +41,9 @@ public class UserController implements Controller<UserBot, Long> {
 
     @Override
     public CompletableFuture<UserBot> create(UserBot userBot) {
-        firebaseDatabase.getReference("Track/"+userBot.getId()).setValue(userBot);
+        firebaseDatabase.getReference("User/"+userBot.getId()).setValue(userBot);
         CompletableFuture<UserBot> future = new CompletableFuture<>();
-        firebaseDatabase.getReference("Track/"+userBot.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
+        firebaseDatabase.getReference("User/"+userBot.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists())
@@ -62,7 +62,7 @@ public class UserController implements Controller<UserBot, Long> {
     @Override
     public void delete(Long aLong) {
         //delete user from tracks
-        firebaseDatabase.getReference("Track/"+aLong).addListenerForSingleValueEvent(new ValueEventListener() {
+        firebaseDatabase.getReference("User/"+aLong).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -93,7 +93,7 @@ public class UserController implements Controller<UserBot, Long> {
             }
         });
         //delete user
-        firebaseDatabase.getReference("Track/"+aLong).removeValue();
+        firebaseDatabase.getReference("User/"+aLong).removeValue();
     }
 
     @Override
