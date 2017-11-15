@@ -5,8 +5,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import ru.epavlov.entity.Statistic;
-import ru.epavlov.entity.StatisticController;
+import ru.epavlov.statistic.Statistic;
+import ru.epavlov.statistic.StatisticController;
 import ru.epavlov.entity.TrackController;
 import ru.epavlov.entity.UserController;
 

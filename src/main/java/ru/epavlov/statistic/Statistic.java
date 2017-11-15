@@ -1,4 +1,4 @@
-package ru.epavlov.entity;
+package ru.epavlov.statistic;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

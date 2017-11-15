@@ -1,4 +1,4 @@
-package ru.epavlov.entity;
+package ru.epavlov.statistic;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
