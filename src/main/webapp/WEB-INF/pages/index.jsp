@@ -16,6 +16,7 @@
     </div>
     <button class="btn btn-danger" onclick="deleteUNUSED()">DELETE UNUSED </button>
     <button class="btn btn-danger" onclick="deleteSIGNIN()">DELETE SIGNIN </button>
+    <button class="btn btn-danger" onclick="deleteGARBAGE()">DELETE GARBAGE </button>
     <table id="myTable" class="table table-striped table-bordered">
         <thead style="background-color: #1d1e1f; color: white">
         <th>id</th>
@@ -103,6 +104,19 @@ ${size}
     function deleteTerm(track_id) {
         $.ajax({
             url: window.location.href + "track?trackId=" + track_id,
+            type: 'DELETE',
+            success: function (response) {
+                location.reload();
+                //console.log(response);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    function deleteGARBAGE() {
+        $.ajax({
+            url: window.location.href + "users/deleteGarbage",
             type: 'DELETE',
             success: function (response) {
                 location.reload();

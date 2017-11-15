@@ -49,6 +49,7 @@ public class ControllerMVC {
     @GetMapping("/userList")
     public String getUserList(Model model) throws InterruptedException, ExecutionException, TimeoutException {
         model.addAttribute("version",version);
+
         List<UserBot> list = userController.getList()
                 .join()
                 .stream()
