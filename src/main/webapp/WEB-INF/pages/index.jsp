@@ -16,6 +16,48 @@
     <div class="row">
         <c:import url="graph/trackGraph.jsp"/>
     </div>
+    <button class="btn btn-danger" onclick="deleteUNUSED()">DELETE UNUSED </button>
+    <button class="btn btn-danger" onclick="deleteSIGNIN()">DELETE SIGNIN </button>
+    <button class="btn btn-danger" onclick="deleteGARBAGE()">DELETE GARBAGE </button>
 </div>
 </body>
+<script>
+    function deleteGARBAGE() {
+        $.ajax({
+            url: window.location.href + "users/deleteGarbage",
+            type: 'DELETE',
+            success: function (response) {
+                location.reload();
+                //console.log(response);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    function deleteUNUSED() {
+        $.ajax({
+            url: window.location.href + "track/deleteUNUSED",
+            type: 'DELETE',
+            success: function (response) {
+                location.reload();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    function deleteSIGNIN() {
+        $.ajax({
+            url: window.location.href + "track/deleteSIGNIN",
+            type: 'DELETE',
+            success: function (response) {
+                location.reload();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+</script>
 </html>

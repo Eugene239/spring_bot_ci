@@ -5,12 +5,11 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import ru.epavlov.statistic.Statistic;
-import ru.epavlov.statistic.StatisticController;
 import ru.epavlov.entity.TrackController;
 import ru.epavlov.entity.UserController;
+import ru.epavlov.statistic.StatisticController;
 
-import java.time.LocalDateTime;
+import javax.annotation.PostConstruct;
 
 /**
  * Created by Eugene on 14.11.2017.
@@ -25,13 +24,16 @@ public class Schedule {
     @Autowired
     StatisticController controller;
 
+    @PostConstruct
+    private void updateStat(){
+        getStatistic();
+    }
+
    // @Scheduled(cron = "*/10 * * * * *") //every 10 seconds
     @Scheduled(cron = "0 0 * * * *") //every 1 hour
     private void getStatistic(){
-        Statistic statistic =new Statistic();
-        statistic.setTrackCnt(trackController.getList().join().size());
-        statistic.setUserCnt(userController.getList().join().size());
-        statistic.setLDT(LocalDateTime.now());
-        controller.save(statistic);
+        controller.saveIfNotEquals(StatisticController.Stats.USERCNT, trackController.getList().join().size());
+        controller.saveIfNotEquals(StatisticController.Stats.TRACKCNT, userController.getList().join().size());
+     //   controller.saveIfNotEquals(StatisticController.Stats.ERROR_MESSAGES, trackController.getList().join().size());
     }
 }

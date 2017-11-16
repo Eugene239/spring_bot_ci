@@ -19,6 +19,7 @@ import java.util.concurrent.CompletableFuture;
 @Repository
 public class TrackController implements Controller<Track,String> {
     private static final Logger log = LogManager.getLogger(TrackController.class);
+
     @Autowired
     FirebaseDatabase firebaseDatabase;
     @Autowired

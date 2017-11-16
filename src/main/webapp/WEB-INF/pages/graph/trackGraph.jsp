@@ -18,19 +18,19 @@
 
         function uploadTrackGraph() {
             $.ajax({
-                url: window.location.href + "statistic",
+                url: window.location.href + "statistic/TRACKCNT",
                 type: 'GET',
                 success: function (response) {
-                    console.log(response);
-                    console.log(trackGraph);
+                   // console.log(response);
+                    //console.log(trackGraph);
                     var oldTrackCnt;
                     for (var i = 0; i < response.length; i++) {
-                        if (oldTrackCnt === undefined) oldTrackCnt = response[i].trackCnt;
+                        if (oldTrackCnt === undefined) oldTrackCnt = response[i].value;
                         trackGraph.options.data[0].dataPoints.push({
-                            x: new Date(Date.parse(response[i].localDateTime)),
-                            y: response[i].trackCnt - oldTrackCnt
+                            x: new Date(Date.parse(response[i].dateTime)),
+                            y: response[i].value - oldTrackCnt
                         });
-                        oldTrackCnt = response[i].trackCnt;
+                        oldTrackCnt = response[i].value;
                     }
                     trackGraph.render();
                     //  console.log(chart.data[0].dataPoints);

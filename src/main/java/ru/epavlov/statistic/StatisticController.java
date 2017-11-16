@@ -20,51 +20,66 @@ import java.util.concurrent.CompletableFuture;
 public class StatisticController {
     private static final Logger log = LogManager.getLogger(StatisticController.class);
     private static final String PATH = "STATISTIC";
+
+    public enum Stats {
+        USERCNT, TRACKCNT, ERROR_MESSAGES
+    }
+
     @Autowired
     private FirebaseDatabase firebaseDatabase;
 
-    public  void save(Statistic statistic){
-        log.debug("start saving: "+statistic.toString());
-        //get last value
-        firebaseDatabase.getReference().child(PATH).orderByKey().limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
+
+    public void saveIfNotEquals(Stats statsEnum, Object value) {
+        log.debug("start saveIfNotEquals: " + statsEnum + " value:" + value.toString());
+        firebaseDatabase.getReference(PATH.concat("/").concat(statsEnum.name()))
+                .orderByKey().limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-
-                    log.debug("last statistic: " + dataSnapshot.getValue().toString());
-                    Statistic lastValue = dataSnapshot.getChildren().iterator().next().getValue(Statistic.class);
-                    if (lastValue.getUserCnt() != statistic.getUserCnt() || lastValue.getTrackCnt() != statistic.getTrackCnt()) {
-                        firebaseDatabase.getReference(PATH).push().setValue(statistic);
-                        log.debug("added new statistic");
-                    } else {
-                        log.debug("no changes");
+                    try {
+                        StatValue data = dataSnapshot.getChildren().iterator().next().getValue(StatValue.class);
+                        if (!value.equals(data.getValue())){
+                            log.debug(statsEnum.name()+" saving value");
+                            firebaseDatabase.getReference(PATH.concat("/").concat(statsEnum.name())).push().setValue(new StatValue(value));
+                        }else {
+                            log.debug(statsEnum.name()+ " no changes");
+                        }
+                    } catch (Exception e) {
+                        log.error(e);
                     }
-                }else{
+                }else {
                     log.debug("creating first stat");
-                    firebaseDatabase.getReference(PATH ).push().setValue(statistic);
+                    firebaseDatabase.getReference(PATH.concat("/").concat(statsEnum.name())).push().setValue(new StatValue(value));
                     log.debug("saved");
                 }
+
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                log.error(databaseError.getMessage(), databaseError.toException());
+
             }
         });
+    }
+
+    public void save(Stats statsEnum, Object value) {
+        log.debug("start saving: " + statsEnum + " value:" + value.toString());
+        firebaseDatabase.getReference(PATH.concat("/").concat(statsEnum.name()))
+                .push().setValue(new StatValue(value));
 
     }
-    public  CompletableFuture<List<Statistic>> getList(){
-        log.debug("getList");
-        CompletableFuture<List<Statistic>> statisticCompletableFuture =new CompletableFuture<>();
-        List<Statistic> list =new ArrayList<>();
-        firebaseDatabase.getReference(PATH).addListenerForSingleValueEvent(new ValueEventListener() {
+    public CompletableFuture<List<StatValue>> getListValues(Stats enumStat){
+        CompletableFuture<List<StatValue>> statisticCompletableFuture =new CompletableFuture<>();
+        List<StatValue> list =new ArrayList<>();
+        firebaseDatabase.getReference(PATH+"/"+enumStat).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                log.debug("list size:"+ dataSnapshot.getChildrenCount());
-                dataSnapshot.getChildren().forEach(stat->{
+                log.debug("list size:" + dataSnapshot.getChildrenCount());
+                dataSnapshot.getChildren().forEach(stat -> {
                     try {
-                        list.add(stat.getValue(Statistic.class));
-                    } catch (Exception e){
-                        log.error(e.getMessage()+" \n"+stat.getValue().toString()+ " \n",e);
+                        list.add(stat.getValue(StatValue.class));
+                    } catch (Exception e) {
+                        log.error(e.getMessage() + " \n" + stat.getValue().toString() + " \n", e);
                     }
                 });
                 log.debug("complete");
@@ -78,4 +93,31 @@ public class StatisticController {
         });
         return statisticCompletableFuture;
     }
+
+//    public  CompletableFuture<List<Statistic>> getList(){
+//        log.debug("getList");
+//        CompletableFuture<List<Statistic>> statisticCompletableFuture =new CompletableFuture<>();
+//        List<Statistic> list =new ArrayList<>();
+//        firebaseDatabase.getReference(PATH).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                log.debug("list size:"+ dataSnapshot.getChildrenCount());
+//                dataSnapshot.getChildren().forEach(stat->{
+//                    try {
+//                        list.add(stat.getValue(Statistic.class));
+//                    } catch (Exception e){
+//                        log.error(e.getMessage()+" \n"+stat.getValue().toString()+ " \n",e);
+//                    }
+//                });
+//                log.debug("complete");
+//                statisticCompletableFuture.complete(list);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                statisticCompletableFuture.complete(list);
+//            }
+//        });
+//        return statisticCompletableFuture;
+//    }
 }
