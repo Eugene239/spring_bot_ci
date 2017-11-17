@@ -22,7 +22,7 @@ public class StatisticController {
     private static final String PATH = "STATISTIC";
 
     public enum Stats {
-        USERCNT, TRACKCNT, ERROR_MESSAGES
+        USERCNT, TRACKCNT, ERRORMESSAGES
     }
 
     @Autowired

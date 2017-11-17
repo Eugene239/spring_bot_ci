@@ -7,7 +7,6 @@ import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
-import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
 import ru.epavlov.entity.MessageList;
 
 import javax.annotation.PostConstruct;
@@ -28,6 +27,14 @@ public class TrackBot extends TelegramLongPollingBot implements TelegramBot {
     private String admin;
     @Value("${bot.name}")
     private String name;
+    @Value("${bot.notifyOnStart}")
+    private boolean notifyOnStart;
+    @Value("${bot.notifyOnStop}")
+    private boolean notifyOnStop;
+
+    public boolean isNotifyOnStart() {
+        return notifyOnStart;
+    }
 
     private List<String> admins;
 
@@ -89,7 +96,8 @@ public class TrackBot extends TelegramLongPollingBot implements TelegramBot {
 
     @PreDestroy
     void detroy() {
-        notifyAdmins("Stopped: " + name+" on:"+ System.getProperty("os.name").toLowerCase());
+        if (notifyOnStop)
+            notifyAdmins("Stopped: " + name+" on:"+ System.getProperty("os.name").toLowerCase());
         this.onClosing();
     }
 
