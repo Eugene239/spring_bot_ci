@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import ru.epavlov.entity.MessageController;
 import ru.epavlov.entity.TrackController;
 import ru.epavlov.entity.UserController;
 import ru.epavlov.statistic.StatisticController;
@@ -22,7 +23,11 @@ public class Schedule {
     @Autowired
     UserController userController;
     @Autowired
+    MessageController messageController;
+    @Autowired
     StatisticController controller;
+
+
 
     @PostConstruct
     private void updateStat(){
@@ -38,6 +43,7 @@ public class Schedule {
         userController.getList().thenAcceptAsync(list->
            controller.saveIfNotEquals(StatisticController.Stats.USERCNT,list.size())
         );
+        controller.saveIfNotEquals(StatisticController.Stats.ERRORMESSAGES, messageController.errorCnt());
      //   controller.saveIfNotEquals(StatisticController.Stats.ERROR_MESSAGES, trackController.getList().join().size());
     }
 }

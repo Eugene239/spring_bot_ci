@@ -27,7 +27,7 @@ public class StatisticRest {
     public List<StatValue> getList(@PathVariable(value = "path") String path){
         List<StatValue> list = new ArrayList<>();
         try{
-            StatisticController.Stats statValue= StatisticController.Stats.valueOf(path);
+            StatisticController.Stats statValue= StatisticController.Stats.valueOf(path.toUpperCase());
             list.addAll(controller.getListValues(statValue).join());
         }catch (Exception e){
             log.error(e.getMessage(),e);
