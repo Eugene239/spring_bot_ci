@@ -1,4 +1,4 @@
-<div id="userGraph" style="height: 300px; width: 45%; display: inline-block"></div>
+<div id="userGraph"></div>
 <script>
     $(document).ready(function () {
         var userGraph = new CanvasJS.Chart("userGraph",
@@ -9,7 +9,9 @@
                 data: [
                     {
                         type: "splineArea",
-                        dataPoints: []
+                        dataPoints: [],
+                        markerColor:"red",
+                        color: "rgba(0,15,173,.7)"
                     }
                 ]
             });

@@ -1,30 +1,62 @@
 package ru.epavlov.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.epavlov.bot.TrackBot;
 import ru.epavlov.entity.UserBot;
 import ru.epavlov.entity.UserController;
 
+import javax.annotation.PostConstruct;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
  * Created by Eugene on 15.11.2017.
  */
-@RestController()
+@RestController(value = "userRest")
 @RequestMapping("/users")
 public class UserRest {
     @Autowired
     private UserController userController;
     @Autowired
+    private ApplicationContext context;
     private TrackBot trackBot;
+
+    @PostConstruct
+    void init(){
+        try{
+            trackBot  = (TrackBot) context.getBean("bot");
+        }catch (Exception ignored){
+
+        }
+    }
+
     @DeleteMapping("/deleteGarbage")
     public void deleteGarbage(){
         List<UserBot> garbage=  userController.getList().join().stream().filter(userBot -> !userBot.isActive() || userBot.getTrackList().size()==0).collect(Collectors.toList());
         garbage.parallelStream().forEach(userBot -> userController.delete(userBot.getId()));
-        trackBot.notifyAdmins("/user/deleteGarbage deleted: "+garbage.size());
+        if (trackBot!=null) {
+            trackBot.notifyAdmins("/user/deleteGarbage deleted: " + garbage.size());
+        }
     }
+
+    @GetMapping("/cnt")
+    public int size(){
+        return userController.getList().join().size();
+    }
+    @GetMapping("/top")
+    public List<UserBot> getTop(){
+        return userController.getList()
+                .join().stream()
+                .sorted(((Comparator<UserBot>)
+                        (o1, o2) -> Integer.compare(o1.getTrackList().size(), o2.getTrackList().size())).reversed())
+                .limit(10).collect(Collectors.toList());
+    }
+
+
 }

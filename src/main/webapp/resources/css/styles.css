@@ -14,3 +14,12 @@ td, th{
 .track_ref{
     cursor: pointer;
 }
+.colored{
+    background-image: linear-gradient(to bottom, #f7f7f7 0%,#eee 100%);
+    border: 1px solid #e5e5e5;
+    border-radius: 0.3rem;
+    padding: 0.4rem;
+}
+.container{
+    margin: 2rem;
+}

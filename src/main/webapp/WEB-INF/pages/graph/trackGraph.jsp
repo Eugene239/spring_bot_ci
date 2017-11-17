@@ -1,4 +1,4 @@
-<div id="trackGraph" style="height: 300px; width: 45%; display: inline-block"></div>
+<div id="trackGraph" style="margin: auto; width: 65%"></div>
 <script>
     $(document).ready(function () {
         var trackGraph = new CanvasJS.Chart("trackGraph",
@@ -9,7 +9,9 @@
                 data: [
                     {
                         type: "splineArea",
-                        dataPoints: []
+                        dataPoints: [],
+                        markerColor:"red",
+                        color: "rgba(14,150,13,.7)"
                     }
                 ]
             });

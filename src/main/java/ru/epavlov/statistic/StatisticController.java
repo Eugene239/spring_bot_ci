@@ -38,8 +38,8 @@ public class StatisticController {
                 if (dataSnapshot.exists()) {
                     try {
                         StatValue data = dataSnapshot.getChildren().iterator().next().getValue(StatValue.class);
-                        if (!value.equals(data.getValue())){
-                            log.debug(statsEnum.name()+" saving value");
+                        if (!value.toString().equals(data.getValue().toString())){
+                            log.debug(statsEnum.name()+" saving value "+data.getValue()+"!="+value);
                             firebaseDatabase.getReference(PATH.concat("/").concat(statsEnum.name())).push().setValue(new StatValue(value));
                         }else {
                             log.debug(statsEnum.name()+ " no changes");

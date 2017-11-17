@@ -44,6 +44,5 @@ public class Schedule {
            controller.saveIfNotEquals(StatisticController.Stats.USERCNT,list.size())
         );
         controller.saveIfNotEquals(StatisticController.Stats.ERRORMESSAGES, messageController.errorCnt());
-     //   controller.saveIfNotEquals(StatisticController.Stats.ERROR_MESSAGES, trackController.getList().join().size());
     }
 }
