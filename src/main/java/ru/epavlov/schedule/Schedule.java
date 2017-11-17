@@ -32,8 +32,12 @@ public class Schedule {
    // @Scheduled(cron = "*/10 * * * * *") //every 10 seconds
     @Scheduled(cron = "0 0 * * * *") //every 1 hour
     private void getStatistic(){
-        controller.saveIfNotEquals(StatisticController.Stats.USERCNT, trackController.getList().join().size());
-        controller.saveIfNotEquals(StatisticController.Stats.TRACKCNT, userController.getList().join().size());
+        trackController.getList().thenAcceptAsync(list->{
+           controller.saveIfNotEquals(StatisticController.Stats.TRACKCNT,list.size());
+        });
+        userController.getList().thenAcceptAsync(list->
+           controller.saveIfNotEquals(StatisticController.Stats.USERCNT,list.size())
+        );
      //   controller.saveIfNotEquals(StatisticController.Stats.ERROR_MESSAGES, trackController.getList().join().size());
     }
 }
