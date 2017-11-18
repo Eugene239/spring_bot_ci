@@ -83,6 +83,7 @@ public class StatisticController {
                     }
                 });
                 log.debug("complete");
+                list.sort(StatValue::compare);
                 statisticCompletableFuture.complete(list);
             }
 

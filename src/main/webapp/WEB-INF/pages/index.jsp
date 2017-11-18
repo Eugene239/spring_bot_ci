@@ -17,20 +17,35 @@
 <head>
     <c:import url="head.jsp"/>
 </head>
+<header class="masthead">
+    <h3 class="text-muted">Track bot ${version}</h3>
+    <nav class="navbar navbar-expand-md navbar-light bg-light rounded mb-3 colored">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav text-md-center nav-justified w-100">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Downloads</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
 <body style="width: 80%; margin: auto">
-<div class="pure-menu pure-menu-horizontal colored" style="margin-top: 2rem; height: fit-content; ">
-    <ul class="pure-menu-list">
-        <li class="pure-menu-item pure-menu-selected"><a href="<c:url value="/" />" class="pure-menu-link">Home</a></li>
-        <%--<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">--%>
-            <%--<a href="" id="menuLink1" class="pure-menu-link">Contact</a>--%>
-            <%--<ul class="pure-menu-children">--%>
-                <%--<li class="pure-menu-item"><a href="#" class="pure-menu-link">Email</a></li>--%>
-                <%--<li class="pure-menu-item"><a href="#" class="pure-menu-link">Twitter</a></li>--%>
-                <%--<li class="pure-menu-item"><a href="#" class="pure-menu-link">Tumblr Blog</a></li>--%>
-            <%--</ul>--%>
-        <%--</li>--%>
-    </ul>
-</div>
 <script src="<c:url value="/resources/js/canvasjs.min.js" />"></script>
 <div class="container" style="margin: auto">
     <div class="row" style="margin: 2rem;display: block">
@@ -48,10 +63,10 @@
             </div>
         </div>
     </div>
-    <div class="row" style="margin: 2rem; text-align: center">
-        <h3 style="text-align: center">Track cnt: ${tracks.size()}</h3>
-        <c:import url="graph/trackGraph.jsp"/>
-    </div>
+    <%--<div class="row" style="margin: 2rem; text-align: center">--%>
+    <%--<h3 style="text-align: center">Track cnt: ${tracks.size()}</h3>--%>
+    <%--<c:import url="graph/trackGraph.jsp"/>--%>
+    <%--</div>--%>
     <%--<div class="row">--%>
     <%--<c:import url="graph/trackGraph.jsp"/>--%>
     <%--</div>--%>
@@ -59,44 +74,45 @@
     <%--<button class="btn btn-danger" onclick="deleteSIGNIN()">DELETE SIGNIN</button>--%>
     <%--<button class="btn btn-danger" onclick="deleteGARBAGE()">DELETE GARBAGE</button>--%>
 </div>
+<c:import url="graph/trackGraph.jsp"/>
 </body>
 <script>
-    function deleteGARBAGE() {
-        $.ajax({
-            url: window.location.href + "users/deleteGarbage",
-            type: 'DELETE',
-            success: function (response) {
-                location.reload();
-                //console.log(response);
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
-    }
-    function deleteUNUSED() {
-        $.ajax({
-            url: window.location.href + "track/deleteUNUSED",
-            type: 'DELETE',
-            success: function (response) {
-                location.reload();
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
-    }
-    function deleteSIGNIN() {
-        $.ajax({
-            url: window.location.href + "track/deleteSIGNIN",
-            type: 'DELETE',
-            success: function (response) {
-                location.reload();
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
-    }
+    //    function deleteGARBAGE() {
+    //        $.ajax({
+    //            url: window.location.href + "users/deleteGarbage",
+    //            type: 'DELETE',
+    //            success: function (response) {
+    //                location.reload();
+    //                //console.log(response);
+    //            },
+    //            error: function (error) {
+    //                console.log(error);
+    //            }
+    //        });
+    //    }
+    //    function deleteUNUSED() {
+    //        $.ajax({
+    //            url: window.location.href + "track/deleteUNUSED",
+    //            type: 'DELETE',
+    //            success: function (response) {
+    //                location.reload();
+    //            },
+    //            error: function (error) {
+    //                console.log(error);
+    //            }
+    //        });
+    //    }
+    //    function deleteSIGNIN() {
+    //        $.ajax({
+    //            url: window.location.href + "track/deleteSIGNIN",
+    //            type: 'DELETE',
+    //            success: function (response) {
+    //                location.reload();
+    //            },
+    //            error: function (error) {
+    //                console.log(error);
+    //            }
+    //        });
+    //    }
 </script>
 </html>
