@@ -48,10 +48,10 @@
 <body style="width: 80%; margin: auto">
 <script src="<c:url value="/resources/js/canvasjs.min.js" />"></script>
 <div class="container" style="margin: auto">
-    <div class="container" style="height: 400px; width: 80%">
+    <div class="container" style="height: 400px; width: 100%">
         <c:import url="graph/userGraph.jsp"/>
     </div>
-    <div class="container" style="height: 400px; width: 80%">
+    <div class="container" style="height: 400px; width: 100%">
         <c:import url="graph/trackGraph.jsp"/>
     </div>
 </div>
