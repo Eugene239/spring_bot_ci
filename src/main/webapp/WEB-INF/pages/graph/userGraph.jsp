@@ -1,9 +1,9 @@
-<div id="userGraph"></div>
+<div id="userGraph" style=""></div>
 <script>
     var userGraph = new CanvasJS.Chart("userGraph",
         {
             title: {
-                text: "USERS"
+                text: "USERS: " +${users.size()}
             },
             data: [
                 {

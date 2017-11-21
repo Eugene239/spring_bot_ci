@@ -3,7 +3,7 @@
     var trackGraph = new CanvasJS.Chart("trackGraph",
         {
             title: {
-                text: "TRACKS"
+                text: "TRACKS: "+${tracks.size()}
             },
             axisX: {
                 valueFormatString: "HH:mm DD:MM"

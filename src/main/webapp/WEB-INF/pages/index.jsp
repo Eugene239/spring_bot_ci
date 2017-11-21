@@ -48,33 +48,13 @@
 <body style="width: 80%; margin: auto">
 <script src="<c:url value="/resources/js/canvasjs.min.js" />"></script>
 <div class="container" style="margin: auto">
-    <div class="row" style="margin: 2rem;display: block">
-        <h3 style="text-align: center">User cnt: ${users.size()}</h3>
-        <div style="display: flex">
-            <div style="width: 45%; display: inline-block; float: right">
-                <c:import url="graph/userGraph.jsp"/>
-            </div>
-            <div style="display: inline-block; margin: auto">
-                <ul>
-                    <c:forEach var="topUser" items="${users.top}">
-                        <li style="padding: 10px">${topUser.FIO} ${topUser.trackList.size()}</li>
-                    </c:forEach>
-                </ul>
-            </div>
-        </div>
+    <div class="container" style="height: 400px; width: 80%">
+        <c:import url="graph/userGraph.jsp"/>
     </div>
-    <%--<div class="row" style="margin: 2rem; text-align: center">--%>
-    <%--<h3 style="text-align: center">Track cnt: ${tracks.size()}</h3>--%>
-    <%--<c:import url="graph/trackGraph.jsp"/>--%>
-    <%--</div>--%>
-    <%--<div class="row">--%>
-    <%--<c:import url="graph/trackGraph.jsp"/>--%>
-    <%--</div>--%>
-    <%--<button class="btn btn-danger" onclick="deleteUNUSED()">DELETE UNUSED</button>--%>
-    <%--<button class="btn btn-danger" onclick="deleteSIGNIN()">DELETE SIGNIN</button>--%>
-    <%--<button class="btn btn-danger" onclick="deleteGARBAGE()">DELETE GARBAGE</button>--%>
+    <div class="container" style="height: 400px; width: 80%">
+        <c:import url="graph/trackGraph.jsp"/>
+    </div>
 </div>
-<c:import url="graph/trackGraph.jsp"/>
 </body>
 <script>
     //    function deleteGARBAGE() {
