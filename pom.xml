@@ -7,6 +7,7 @@
     <version>1.0-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
     <properties>
+        <env>raspberry</env>
         <java.version>1.8</java.version>
         <sourceEncoding>UTF-8</sourceEncoding>
     </properties>
@@ -79,13 +80,55 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+
+        <!--WEB-APP-->
+        <!-- https://mvnrepository.com/artifact/org.webjars.npm/vue -->
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>vue</artifactId>
+            <version>2.5.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>axios</artifactId>
+            <version>0.17.0</version>
+        </dependency>
+
+
     </dependencies>
 
 
 
-
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
+
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <copy todir="${project.build.outputDirectory}"
+                                      overwrite="true">
+                                    <fileset dir="${project.basedir}/env/${env}">
+                                        <include name="**/*.properties"></include>
+                                        <include name="**/*.xml"></include>
+                                        <include name="**/*.wsdl"></include>
+                                        <!--<include name="*.properties"/>-->
+                                        <!--<include name="*.xml"/>-->
+                                    </fileset>
+                                </copy>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
