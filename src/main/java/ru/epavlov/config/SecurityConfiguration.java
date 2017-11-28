@@ -28,10 +28,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .logout().logoutUrl("/logout").logoutSuccessUrl("/")
 
   //              .and()
-                .antMatcher("")
-                .authorizeRequests()
-                .antMatchers("").permitAll()
-                .and()
 
                 .antMatcher("/admin**/**")
                 .authorizeRequests()
@@ -41,7 +37,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/j_spring_security_check").permitAll()
                 .and().httpBasic()
-                .and().csrf().disable();
+                .and().rememberMe().disable()
+                .csrf().disable();
 
         // .exceptionHandling().accessDeniedPage("/forbidden");
     }
