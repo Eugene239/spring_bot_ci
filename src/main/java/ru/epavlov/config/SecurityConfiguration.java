@@ -28,6 +28,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .logout().logoutUrl("/logout").logoutSuccessUrl("/")
 
   //              .and()
+                .antMatcher("")
+                .authorizeRequests()
+                .antMatchers("").permitAll()
+                .and()
+
                 .antMatcher("/admin**/**")
                 .authorizeRequests()
                 .antMatchers("/**").hasRole("ADMIN")
