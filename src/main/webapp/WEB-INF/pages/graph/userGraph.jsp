@@ -6,7 +6,7 @@
                 text: "USERS: " +${users.size()}
             },
             axisX: {
-                valueFormatString: "DD:MM HH:mm"
+                valueFormatString: "DD:MM"
             },
             data: [
                 {

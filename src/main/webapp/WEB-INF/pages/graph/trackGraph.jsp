@@ -6,7 +6,7 @@
                 text: "TRACKS: "+${tracks.size()}
             },
             axisX: {
-                valueFormatString: "DD:MM HH:mm"
+                valueFormatString: "DD:MM"
             },
             data: [
                 {
