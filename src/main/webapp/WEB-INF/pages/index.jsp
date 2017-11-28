@@ -14,8 +14,8 @@
 %>
 <html>
 <head>
-    <c:import url="head.jsp"/>
-    <c:import url="scripts.jsp"/>
+    <c:import url="./common/head.jsp"/>
+    <c:import url="./common/scripts.jsp"/>
     <script src="<c:url value="/resources/js/canvasjs.min.js" />"></script>
 </head>
 <body>

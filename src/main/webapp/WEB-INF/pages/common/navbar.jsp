@@ -14,6 +14,7 @@
             <b-navbar-nav class="ml-auto col-lg-5" style="margin: auto">
                 <b-nav-item href="#">USERS</b-nav-item>
                 <b-nav-item href="#">TRACKS</b-nav-item>
+                <b-nav-item href="/admin">ADMIN</b-nav-item>
                 <%--<b-nav-item-dropdown text="Lang" right>--%>
                 <%--<b-dropdown-item href="#">EN</b-dropdown-item>--%>
                 <%--<b-dropdown-item href="#">ES</b-dropdown-item>--%>
