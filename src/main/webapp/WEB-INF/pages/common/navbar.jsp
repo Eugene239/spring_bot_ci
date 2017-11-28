@@ -1,17 +1,17 @@
 <div id="header">
     <b-navbar toggleable="md" type="dark" style="background-color: #49525e" sticky="true">
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-        <b-navbar-brand href="/"
-                        style="color: white; text-shadow: 1px 2px 0px black, 0 0 2em #000; padding-top: 0; padding-left: 20%">
+        <b-navbar-brand class="col-lg-7" href="/"
+                        style="color: white;text-align: center; width: auto;  text-shadow: 1px 2px 0px black, 0 0 2em #000; padding-top: 0;">
             TrackBot: ${version}
         </b-navbar-brand>
-        <b-collapse is-nav id="nav_collapse" style="padding-right: 250px">
+        <b-collapse is-nav id="nav_collapse" >
             <%--<b-navbar-nav>--%>
             <%--<b-nav-item href="#">USERS</b-nav-item>--%>
             <%--<b-nav-item href="#">TRACKS</b-nav-item>--%>
             <%--</b-navbar-nav>--%>
             <!-- Right aligned nav items -->
-            <b-navbar-nav class="ml-auto">
+            <b-navbar-nav class="ml-auto col-lg-5" style="margin: auto">
                 <b-nav-item href="#">USERS</b-nav-item>
                 <b-nav-item href="#">TRACKS</b-nav-item>
                 <%--<b-nav-item-dropdown text="Lang" right>--%>

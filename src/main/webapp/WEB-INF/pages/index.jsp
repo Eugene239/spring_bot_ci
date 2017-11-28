@@ -20,11 +20,11 @@
 </head>
 <body>
 <c:import url="./common/navbar.jsp"/>
-    <div class="container" style="margin: auto">
-        <div class="container" style="height: 400px; width: 100%">
+    <div class="container" style="margin: auto; margin-top: 3rem">
+        <div class="container" style="height: 400px; width: 100%; margin: auto">
             <c:import url="graph/userGraph.jsp"/>
         </div>
-        <div class="container" style="height: 400px; width: 100%">
+        <div class="container" style="height: 400px; width: 100%; margin: auto">
             <c:import url="graph/trackGraph.jsp"/>
         </div>
     </div>
