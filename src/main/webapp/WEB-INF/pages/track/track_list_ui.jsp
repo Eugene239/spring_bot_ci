@@ -21,11 +21,3 @@
         </button>
     </td>
 </tr>
-
-<%--<div class="container" style="width: 100%;height: 90px;  border: solid #000000 2px; vertical-align: middle">--%>
-<%--<div class="track_list" >${track.id}</div>--%>
-<%--<div class="track_list" style="width: 20%">${track.status}</div>--%>
-<%--<div class="track_list">${track.text}</div>--%>
-<%--<div class="track_list" style="width: 15%;">${track.last_modify}</div>--%>
-<%--<div class="track_list" style="width: 15%">${track.time}</div>--%>
-<%--</div>--%>

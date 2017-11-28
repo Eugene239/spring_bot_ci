@@ -37,5 +37,4 @@ time : ${track.time}
 </table>
 
 </body>
-<c:import url="../bootstrap.jsp"/>
 </html>
