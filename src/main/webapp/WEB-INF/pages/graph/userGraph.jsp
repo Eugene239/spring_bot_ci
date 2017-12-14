@@ -1,4 +1,4 @@
-<div id="userGraph" style=""></div>
+<div id="userGraph" style="margin-top: 4rem; height: 350px"></div>
 <script>
     var userGraph = new CanvasJS.Chart("userGraph",
         {

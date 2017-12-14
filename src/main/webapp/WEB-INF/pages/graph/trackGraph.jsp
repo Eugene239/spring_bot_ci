@@ -1,4 +1,4 @@
-<div id="trackGraph" style="width: 100%"></div>
+<div id="trackGraph" style="width: 100%; margin-top: 4rem; height: 350px"></div>
 <script>
     var trackGraph = new CanvasJS.Chart("trackGraph",
         {

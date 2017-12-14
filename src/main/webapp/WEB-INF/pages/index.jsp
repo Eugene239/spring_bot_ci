@@ -16,18 +16,17 @@
 <head>
     <c:import url="./common/head.jsp"/>
     <c:import url="./common/scripts.jsp"/>
-    <script src="<c:url value="/resources/js/canvasjs.min.js" />"></script>
+    <%--<script src="<c:url value="/resources/js/canvasjs.min.js" />"></script>--%>
 </head>
-<body>
+<body style="margin: 0">
 <c:import url="./common/navbar.jsp"/>
-    <div class="container" style="margin: auto; margin-top: 3rem">
-        <div class="container" style="height: 400px; width: 100%; margin: auto">
-            <c:import url="graph/userGraph.jsp"/>
-        </div>
-        <div class="container" style="height: 400px; width: 100%; margin: auto">
-            <c:import url="graph/trackGraph.jsp"/>
-        </div>
+<navbar></navbar>
+<div style="height: 100%">
+    <div class="el-col el-col-14" style="margin: auto; float: none">
+        <c:import url="graph/userGraph.jsp"/>
+        <c:import url="graph/trackGraph.jsp"/>--%>
     </div>
+</div>
 </body>
 <script>
     //    function deleteGARBAGE() {
