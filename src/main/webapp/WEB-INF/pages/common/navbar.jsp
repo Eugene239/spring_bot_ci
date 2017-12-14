@@ -12,10 +12,11 @@
                     active-text-color="#5555ff"
             >
                 <el-menu-item index="1" style="font-weight: bold">TRACK BOT</el-menu-item>
-                <el-menu-item index="2" style="float: right">USERS</el-menu-item>
-                <el-menu-item index="3" style="float: right">TRACKS</el-menu-item>
-                <el-menu-item index="4" style="float: right">ERRORS</el-menu-item>
+
                 <el-menu-item index="5" style="float: right">ADMIN</el-menu-item>
+                <el-menu-item index="4" style="float: right">ERRORS</el-menu-item>
+                <el-menu-item index="3" style="float: right">TRACKS</el-menu-item>
+                <el-menu-item index="2" style="float: right">USERS</el-menu-item>
             </el-menu>
         </el-col>
     </el-row>

@@ -24,47 +24,8 @@
 <div style="height: 100%">
     <div class="el-col el-col-14" style="margin: auto; float: none">
         <c:import url="graph/userGraph.jsp"/>
-        <c:import url="graph/trackGraph.jsp"/>--%>
+        <c:import url="graph/trackGraph.jsp"/>
     </div>
 </div>
 </body>
-<script>
-    //    function deleteGARBAGE() {
-    //        $.ajax({
-    //            url: window.location.href + "users/deleteGarbage",
-    //            type: 'DELETE',
-    //            success: function (response) {
-    //                location.reload();
-    //                //console.log(response);
-    //            },
-    //            error: function (error) {
-    //                console.log(error);
-    //            }
-    //        });
-    //    }
-    //    function deleteUNUSED() {
-    //        $.ajax({
-    //            url: window.location.href + "track/deleteUNUSED",
-    //            type: 'DELETE',
-    //            success: function (response) {
-    //                location.reload();
-    //            },
-    //            error: function (error) {
-    //                console.log(error);
-    //            }
-    //        });
-    //    }
-    //    function deleteSIGNIN() {
-    //        $.ajax({
-    //            url: window.location.href + "track/deleteSIGNIN",
-    //            type: 'DELETE',
-    //            success: function (response) {
-    //                location.reload();
-    //            },
-    //            error: function (error) {
-    //                console.log(error);
-    //            }
-    //        });
-    //    }
-</script>
 </html>

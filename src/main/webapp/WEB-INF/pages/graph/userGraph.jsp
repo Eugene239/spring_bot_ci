@@ -19,8 +19,9 @@
         });
     userGraph.render();
     uploadUserGraph();
+
     function uploadUserGraph() {
-        userGraph.creditText='';
+        userGraph.creditText = '';
         console.log(userGraph);
         axios.get('statistic/usercnt')
             .then(function (response) {
@@ -29,11 +30,14 @@
                 userGraph.options.data[0].dataPoints = [];
                 for (var i = 0; i < response.length; i++) {
                     if (oldUserCnt === undefined) oldUserCnt = response[i].value;
-                    userGraph.options.data[0].dataPoints.push({
-                        x: new Date(Date.parse(response[i].dateTime)),
-                        y: response[i].value - oldUserCnt
-                    });
+                    if (response[i].value > oldUserCnt) {
+                        userGraph.options.data[0].dataPoints.push({
+                            x: new Date(Date.parse(response[i].dateTime)),
+                            y: response[i].value - oldUserCnt
+                        });
+                    }
                     oldUserCnt = response[i].value;
+
                 }
                 userGraph.render();
             })

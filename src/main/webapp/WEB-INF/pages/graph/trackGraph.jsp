@@ -29,10 +29,12 @@
                 trackGraph.options.data[0].dataPoints = [];
                 for (var i = 0; i < response.length; i++) {
                     if (oldTrackCnt === undefined) oldTrackCnt = response[i].value;
-                    trackGraph.options.data[0].dataPoints.push({
-                        x: new Date(Date.parse(response[i].dateTime)),
-                        y: response[i].value - oldTrackCnt
-                    });
+                    if (response[i].value > oldTrackCnt) {
+                        trackGraph.options.data[0].dataPoints.push({
+                            x: new Date(Date.parse(response[i].dateTime)),
+                            y: response[i].value - oldTrackCnt
+                        });
+                    }
                     oldTrackCnt = response[i].value;
                 }
                 trackGraph.render();

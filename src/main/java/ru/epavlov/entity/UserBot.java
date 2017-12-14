@@ -1,5 +1,7 @@
 package ru.epavlov.entity;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.HashMap;
 
 /**
@@ -15,6 +17,7 @@ public class UserBot {
     private String last_name;
     private boolean active;
     private String lastMessageTime;
+    private String fio;
     private HashMap<String,UserTrack> trackList= new HashMap<>();
 
     public HashMap<String, UserTrack> getTrackList() {
@@ -80,15 +83,20 @@ public class UserBot {
         this.lastMessageTime = lastMessageTime;
     }
 
-    public String getFIO(){
+    public void setTrackList(HashMap<String, UserTrack> trackList) {
+        this.trackList = trackList;
+    }
+
+    public String getFio() {
         String fio = "";
         if (getUser_name()!=null && !getUser_name().isEmpty()) return getUser_name();
         if (getFirst_name()!=null && !getFirst_name().isEmpty()) fio=getFirst_name();
         if (getLast_name()!=null && !getLast_name().isEmpty()) fio+=" "+getLast_name();
         return fio;
     }
-    public void setTrackList(HashMap<String, UserTrack> trackList) {
-        this.trackList = trackList;
+
+    public void setFio(String fio) {
+        this.fio = fio;
     }
 
     @Override
