@@ -23,12 +23,12 @@
             </md-app-toolbar>
 
             <md-app-drawer :md-active.sync="menuVisible">
-                <md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar>
+                <md-toolbar class="md-inset" md-elevation="0"><h3 style="margin: 1rem">TrackBot ${version}</h3></md-toolbar>
 
-                <md-list style="height: max-content">
-                    <md-list-item>
-                        <md-icon>move_to_inbox</md-icon>
-                        <span class="md-list-item-text">Inbox</span>
+                <md-list style="height: max-content" >
+                    <md-list-item onclick="window.location.href='/'">
+                        <md-icon>home</md-icon>
+                        <span class="md-list-item-text">Main</span>
                     </md-list-item>
 
                     <md-list-item>
@@ -36,9 +36,9 @@
                         <span class="md-list-item-text">Sent Mail</span>
                     </md-list-item>
 
-                    <md-list-item>
+                    <md-list-item onclick="window.location.href='/clearDB'">
                         <md-icon>delete</md-icon>
-                        <span class="md-list-item-text">Trash</span>
+                        <span class="md-list-item-text">Clear DB</span>
                     </md-list-item>
 
                     <md-list-item>

@@ -30,25 +30,17 @@ public class ControllerMVC {
 
     @Autowired
     UserController userController;
-    @Value("${bot_version}")
-    String version;
-    
-    @GetMapping("/")
-    public String main(Model model) throws InterruptedException, ExecutionException, TimeoutException {
-        List<Track> list = trackController.getList().join();
-        model.addAttribute("version",version);
-        model.addAttribute("list",list);
-        model.addAttribute("size",list.size());
-        return "index";
-    }
+
+
     @GetMapping("/trackList")
     public String getTrackList(Model model) throws InterruptedException, ExecutionException, TimeoutException {
-        return main(model);
+      //  return main(model);
+        return "";
     }
 
     @GetMapping("/userList")
     public String getUserList(Model model) throws InterruptedException, ExecutionException, TimeoutException {
-        model.addAttribute("version",version);
+     //   model.addAttribute("version",version);
 
         List<UserBot> list = userController.getList()
                 .join()
@@ -64,7 +56,7 @@ public class ControllerMVC {
 
     @GetMapping("/user/{id}")
     public String getUser(@PathVariable("id") Long id,  Model model) throws InterruptedException, ExecutionException, TimeoutException {
-        model.addAttribute("version",version);
+      //  model.addAttribute("version",version);
         UserBot userBot = userController.get(id).join();
        // System.out.println(userBot);
         model.addAttribute("user",userBot);
@@ -72,7 +64,7 @@ public class ControllerMVC {
     }
     @GetMapping("/track/{id}")
     public String getTrack(@PathVariable("id") String id,  Model model) throws InterruptedException, ExecutionException, TimeoutException {
-        model.addAttribute("version",version);
+      //  model.addAttribute("version",version);
         Track track = trackController.get(id).join();
         //System.out.println(userBot);
         model.addAttribute("track",track);

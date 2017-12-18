@@ -49,3 +49,11 @@ td, th{
 .md-app{
     height: 100%;
 }
+.md-list-item:hover{
+    background: #bbb;
+    cursor: pointer;
+}
+.md-card{
+    width: 400px;
+    height: fit-content;
+}
