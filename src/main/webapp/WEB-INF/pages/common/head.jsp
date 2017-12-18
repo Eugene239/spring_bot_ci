@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/styles.css" />">
 <script src="<c:url value="/webjars/axios/0.17.0/dist/axios.min.js"/>"></script>
 <script src="<c:url value="webjars/vue/2.5.8/dist/vue.min.js" />"></script>
-<link rel="stylesheet" href="<c:url value="/resources/lib/element.css" />">
-<link rel="stylesheet" href="<c:url value="/resources/lib/element-theme.css" />">
-<script src="<c:url value="/resources/lib/element.js"/>"></script>
 <script src="<c:url value="/resources/js/canvasjs.min.js"/>"></script>
+<link rel="stylesheet" href="<c:url value="/resources/lib/googleFonst.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/lib/vue-material.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/lib/theme.css"/>">
+<script src="<c:url value="/resources/lib/vue-material.js"/>"></script>
