@@ -46,3 +46,6 @@ td, th{
     /*width: 100%;*/
     /*padding-right: 200px;*/
 }
+.md-app{
+    height: 100%;
+}
