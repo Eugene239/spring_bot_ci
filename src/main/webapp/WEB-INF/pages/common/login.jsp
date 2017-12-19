@@ -24,7 +24,7 @@
                     </md-card-header>
                     <md-card-content>
                         <div class="md-layout-row md-layout-wrap md-gutter">
-                            <div class="md-flex md-flex-small-100">
+                            <div class="md-flex md-flex-small-80">
                                 <md-input-container>
                                     <md-field>
                                         <input placeholder="User" :name="usernameval" id="username" autocomplete="given-name"

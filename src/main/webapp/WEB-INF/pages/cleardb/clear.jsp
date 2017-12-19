@@ -11,52 +11,60 @@
     <navbar>
         <div slot="content">
             <div style="margin:3rem; " class="md-layout md-gutter">
-                <md-card md-with-hover class="md-layout-item md-size-20">
-                    <md-ripple>
-                        <md-card-header>
-                            <div class="md-title">Tracks</div>
-                            <div class="md-subhead">Delete unused tracks</div>
-                        </md-card-header>
-                        <md-divider></md-divider>
-                        <md-card-content>
-                            Delete tracks with status:
-                            <ul>
-                                <li>SIGNIN</li>
-                                <li>SIGNIN_EXC</li>
-                            </ul>
-                        </md-card-content>
-                        <md-card-actions>
-                            <md-button class="md-raised md-primary" @click="deleteTracksWithStatus()">DELETE</md-button>
-                        </md-card-actions>
-                        <md-divider></md-divider>
-                        <md-card-content>
-                            Delete tracks without users
-                        </md-card-content>
+                <md-layout-item>
+                    <md-card md-with-hover>
+                        <md-ripple>
+                            <md-card-header>
+                                <div class="md-title">Tracks</div>
+                                <div class="md-subhead">Delete unused tracks</div>
+                            </md-card-header>
+                            <md-divider></md-divider>
+                            <md-card-content>
+                                Delete tracks with status:
+                                <ul>
+                                    <li>SIGNIN</li>
+                                    <li>SIGNIN_EXC</li>
+                                </ul>
+                            </md-card-content>
+                            <md-card-actions>
+                                <md-button class="md-raised md-primary" @click="deleteTracksWithStatus()">DELETE
+                                </md-button>
+                            </md-card-actions>
+                            <md-divider></md-divider>
+                            <md-card-content>
+                                Delete tracks without users
+                            </md-card-content>
 
-                        <md-card-actions>
-                            <md-button class="md-raised md-primary" @click="deleteUnusedTracks()">DELETE</md-button>
-                        </md-card-actions>
+                            <md-card-actions>
+                                <md-button class="md-raised md-primary" @click="deleteUnusedTracks()">DELETE</md-button>
+                            </md-card-actions>
 
-                    </md-ripple>
-                </md-card>
-                <md-card md-with-hover class="md-layout-item md-size-20">
-                    <md-ripple>
-                        <md-card-header>
-                            <div class="md-title">Users</div>
-                            <div class="md-subhead">Delete</div>
-                        </md-card-header>
-                        <md-divider></md-divider>
-                        <md-card-content>
-                            Delete users without tracks
-                        </md-card-content>
-                        <md-card-actions>
-                            <md-button class="md-raised md-primary" @click="deleteUselessUsers()"/>DELETE</md-button>
-                        </md-card-actions>
+                        </md-ripple>
+                    </md-card>
+                </md-layout-item>
+                <lmd-layout-item>
+                    <md-card md-with-hover>
+                        <md-ripple>
+                            <md-card-header>
+                                <div class="md-title">Users</div>
+                                <div class="md-subhead">Delete</div>
+                            </md-card-header>
+                            <md-divider></md-divider>
+                            <md-card-content>
+                                Delete users without tracks
+                            </md-card-content>
+                            <md-card-actions>
+                                <md-button class="md-raised md-primary" @click="deleteUselessUsers()"/>
+                                DELETE</md-button>
+                            </md-card-actions>
 
-                    </md-ripple>
-                </md-card>
+                        </md-ripple>
+                    </md-card>
+                </lmd-layout-item>
             </div>
+
         </div>
+
     </navbar>
 </div>
 </body>
