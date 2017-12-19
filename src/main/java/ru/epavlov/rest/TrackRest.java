@@ -54,6 +54,7 @@ public class TrackRest {
 
     @DeleteMapping("/deleteUNUSED")
     public void  deleteUnused() {
+        log.info("deleteUNUSED");
         List<Track> unused = trackController.getList().join().stream()
                 .filter(track -> track.getUsers().size() == 0).collect(Collectors.toList());
         unused.parallelStream().forEach(track -> trackController.delete(track.getId()));
@@ -62,6 +63,7 @@ public class TrackRest {
 
     @DeleteMapping("/deleteSIGNIN")
     public void deleteSIGNIN() {
+        log.info("deleteSIGNIN");
         List<Track> signed = trackController.getList().join().stream()
                 .filter(track -> "SIGNIN".equals(track.getStatus())).collect(Collectors.toList());
         signed.parallelStream().forEach(track -> trackController.delete(track.getId()));

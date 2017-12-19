@@ -1,5 +1,6 @@
 package ru.epavlov.rest;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,9 @@ public class ConfigRest {
     public String main() {
         return "index";
     }
+
     @GetMapping("/clearDB")
+    @PreAuthorize(value = "hasRole('ROLE_ADMIN')")
     public String delete() {
         return "cleardb/clear";
     }

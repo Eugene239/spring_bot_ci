@@ -6,9 +6,12 @@ import com.google.firebase.auth.FirebaseCredentials;
 import com.google.firebase.database.FirebaseDatabase;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.Ordered;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -21,6 +24,7 @@ import java.io.InputStream;
 @ComponentScan("ru.epavlov")
 @PropertySource("classpath:application.properties")
 @ImportResource("classpath:spring.xml")
+@EnableGlobalMethodSecurity(prePostEnabled=true)
 @EnableScheduling
 public class WebConfig extends WebMvcConfigurerAdapter {
 
@@ -65,5 +69,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
             Runtime.getRuntime().exit(-1);
         }
         return FirebaseDatabase.getInstance();
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("common/login");
+        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 }

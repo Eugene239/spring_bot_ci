@@ -15,29 +15,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-//                .formLogin()
-//                .loginPage("/login")
-//                .usernameParameter("username")
-//                .passwordParameter("password")
-//                .loginProcessingUrl("/j_spring_security_check")
-//                .failureUrl("/login?error=true")
-//                .and()
-//                .rememberMe().tokenValiditySeconds(Integer.MAX_VALUE)
-
-//                .and()
-//                .logout().logoutUrl("/logout").logoutSuccessUrl("/")
-
-  //              .and()
-
-                .antMatcher("/admin**/**")
-                .authorizeRequests()
-                .antMatchers("/**").hasRole("ADMIN")
-
+                .formLogin()
+                .loginPage("/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .loginProcessingUrl("/j_spring_security_check")
+                .failureUrl("/login?error=true")
+                .and()
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/")
                 .and()
                 .authorizeRequests()
                 .antMatchers("/j_spring_security_check").permitAll()
-                .and().httpBasic()
-                .and().rememberMe().disable()
+
+                .and()
                 .csrf().disable();
 
         // .exceptionHandling().accessDeniedPage("/forbidden");

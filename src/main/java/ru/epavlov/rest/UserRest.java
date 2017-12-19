@@ -1,5 +1,7 @@
 package ru.epavlov.rest;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,6 +23,7 @@ import java.util.stream.Collectors;
 @RestController(value = "userRest")
 @RequestMapping("/users")
 public class UserRest {
+    private static final Logger log = LogManager.getLogger(UserRest.class);
     @Autowired
     private UserController userController;
     @Autowired
@@ -38,6 +41,7 @@ public class UserRest {
 
     @DeleteMapping("/deleteGarbage")
     public void deleteGarbage(){
+        log.info("/deleteGarbage");
         List<UserBot> garbage=  userController.getList().join().stream().filter(userBot -> !userBot.isActive() || userBot.getTrackList().size()==0).collect(Collectors.toList());
         garbage.parallelStream().forEach(userBot -> userController.delete(userBot.getId()));
         if (trackBot!=null) {

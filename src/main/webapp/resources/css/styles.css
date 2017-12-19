@@ -56,4 +56,8 @@ td, th{
 .md-card{
     width: 400px;
     height: fit-content;
+    margin: 4px;
+}
+.md-ripple {
+    height: fit-content;
 }
