@@ -10,9 +10,9 @@
 <div id="mapp">
     <navbar>
         <div slot="content">
-            <div style="margin:3rem; " class="md-layout md-gutter">
-                <md-layout-item>
-                    <md-card md-with-hover style="width: 400px">
+            <div class="md-layout md-gutter md-alignment-top-center">
+                <div class="md-layout-item md-large-size-100 md-medium-size-40  md-small-size-80  md-xsmall-size-100" style="max-width: 500px">
+                    <md-card md-with-hover >
                         <md-ripple>
                             <md-card-header>
                                 <div class="md-title">Tracks</div>
@@ -41,9 +41,9 @@
 
                         </md-ripple>
                     </md-card>
-                </md-layout-item>
-                <md-layout-item>
-                    <md-card md-with-hover style="width: 400px">
+                </div>
+                <div class="md-layout-item md-large-size-100 md-medium-size-40  md-small-size-80 md-xsmall-size-100" style="max-width: 500px">
+                    <md-card md-with-hover >
                         <md-ripple>
                             <md-card-header>
                                 <div class="md-title">Users</div>
@@ -60,7 +60,7 @@
 
                         </md-ripple>
                     </md-card>
-                </md-layout-item>
+                </div>
             </div>
 
         </div>
