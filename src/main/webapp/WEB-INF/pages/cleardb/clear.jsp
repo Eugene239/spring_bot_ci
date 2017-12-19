@@ -12,7 +12,7 @@
         <div slot="content">
             <div style="margin:3rem; " class="md-layout md-gutter">
                 <md-layout-item>
-                    <md-card md-with-hover>
+                    <md-card md-with-hover style="width: 400px">
                         <md-ripple>
                             <md-card-header>
                                 <div class="md-title">Tracks</div>
@@ -42,8 +42,8 @@
                         </md-ripple>
                     </md-card>
                 </md-layout-item>
-                <lmd-layout-item>
-                    <md-card md-with-hover>
+                <md-layout-item>
+                    <md-card md-with-hover style="width: 400px">
                         <md-ripple>
                             <md-card-header>
                                 <div class="md-title">Users</div>
@@ -60,7 +60,7 @@
 
                         </md-ripple>
                     </md-card>
-                </lmd-layout-item>
+                </md-layout-item>
             </div>
 
         </div>
