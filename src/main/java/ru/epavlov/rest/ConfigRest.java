@@ -26,4 +26,10 @@ public class ConfigRest {
     public String delete() {
         return "cleardb/clear";
     }
+
+    @GetMapping("/tracks")
+   // @PreAuthorize(value = "hasRole('ROLE_ADMIN')")
+    public String tracksPage() {
+        return "tracks";
+    }
 }

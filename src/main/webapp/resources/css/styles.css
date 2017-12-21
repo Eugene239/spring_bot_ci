@@ -61,3 +61,6 @@ td, th{
 .md-ripple {
     height: fit-content;
 }
+.md-table-head, .md-table-cell{
+    text-align: center !important;
+}

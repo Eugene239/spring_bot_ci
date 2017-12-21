@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 
 @RestController(value = "trackRest")
-@RequestMapping("/track")
+@RequestMapping("/api/tracks")
 public class TrackRest {
     private static final Logger log = LogManager.getLogger(TrackRest.class);
     @Autowired
@@ -53,20 +53,22 @@ public class TrackRest {
     }
 
     @DeleteMapping("/deleteUNUSED")
-    public void  deleteUnused() {
+    public int  deleteUnused() {
         log.info("deleteUNUSED");
         List<Track> unused = trackController.getList().join().stream()
                 .filter(track -> track.getUsers().size() == 0).collect(Collectors.toList());
         unused.parallelStream().forEach(track -> trackController.delete(track.getId()));
         if (trackBot != null) trackBot.notifyAdmins("Deleted: " + unused.size() + " unused tracks");
+        return unused.size();
     }
 
     @DeleteMapping("/deleteSIGNIN")
-    public void deleteSIGNIN() {
+    public int deleteSIGNIN() {
         log.info("deleteSIGNIN");
         List<Track> signed = trackController.getList().join().stream()
                 .filter(track -> "SIGNIN".equals(track.getStatus())).collect(Collectors.toList());
         signed.parallelStream().forEach(track -> trackController.delete(track.getId()));
         if (trackBot != null) trackBot.notifyAdmins("Deleted: " + signed.size() + " signed tracks");
+        return signed.size();
     }
 }

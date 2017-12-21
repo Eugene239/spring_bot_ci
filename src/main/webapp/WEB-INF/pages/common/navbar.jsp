@@ -31,20 +31,15 @@
                         <span class="md-list-item-text">Main</span>
                     </md-list-item>
 
-                    <%--<md-list-item>--%>
-                        <%--<md-icon>send</md-icon>--%>
-                        <%--<span class="md-list-item-text">Sent Mail</span>--%>
-                    <%--</md-list-item>--%>
+                    <md-list-item onclick="window.location.href='/tracks'">
+                        <md-icon>flight_takeoff</md-icon>
+                        <span class="md-list-item-text">Tracks</span>
+                    </md-list-item>
 
                     <md-list-item onclick="window.location.href='/clearDB'">
                         <md-icon>delete</md-icon>
                         <span class="md-list-item-text">Clear DB</span>
                     </md-list-item>
-
-                    <%--<md-list-item>--%>
-                        <%--<md-icon>error</md-icon>--%>
-                        <%--<span class="md-list-item-text">Spam</span>--%>
-                    <%--</md-list-item>--%>
                 </md-list>
             </md-app-drawer>
 

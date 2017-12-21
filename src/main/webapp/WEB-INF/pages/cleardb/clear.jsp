@@ -10,6 +10,12 @@
 <div id="mapp">
     <navbar>
         <div slot="content">
+            <md-dialog-alert
+                    :md-active.sync="dialog"
+                    :md-title="dialogTitle"
+                    :md-content="dialogText" >
+            </md-dialog-alert>
+
             <div class="md-layout md-gutter md-alignment-top-center">
                 <div class="md-layout-item md-large-size-100 md-medium-size-40  md-small-size-80  md-xsmall-size-100" style="max-width: 500px">
                     <md-card md-with-hover >
@@ -70,16 +76,22 @@
 </body>
 <script>
     Vue.use(VueMaterial.default)
-    new Vue({
+    var vue =new Vue({
         el: "#mapp",
         data: () => ({
             menuVisible: false,
+            dialog:false,
+            dialogTitle:'title',
+            dialogText:'texted <b>refe</b>'
         }),
         methods: {
             deleteTracksWithStatus: function () {
                 console.log('deleteTracksWithStatus');
-                axios.delete('track/deleteSIGNIN')
-                    .then(function (response) {
+                axios.delete('api/tracks/deleteSIGNIN')
+                    .then(function (response, ) {
+                        vue.dialogTitle='Доставленные товары';
+                        vue.dialogText='Удалено: '+response.data;
+                        vue.dialog=true;
                         console.log(response);
                     })
                     .catch(function (response) {
@@ -88,8 +100,11 @@
             },
             deleteUnusedTracks: function () {
                 console.log('deleteUnusedTracks');
-                axios.delete('track/deleteUNUSED')
+                axios.delete('api/tracks/deleteUNUSED')
                     .then(function (response) {
+                        vue.dialogTitle='Треки без пользователей';
+                        vue.dialogText='Удалено: '+response.data;
+                        vue.dialog=true;
                         console.log(response);
                     })
                     .catch(function (response) {
@@ -100,6 +115,9 @@
                 console.log('deleteUselessUsers');
                 axios.delete('users/deleteGarbage')
                     .then(function (response) {
+                        vue.dialogTitle='Неактивные пользователи';
+                        vue.dialogText='Удалено: '+response.data;
+                        vue.dialog=true;
                         console.log(response);
                     })
                     .catch(function (response) {

@@ -40,13 +40,14 @@ public class UserRest {
     }
 
     @DeleteMapping("/deleteGarbage")
-    public void deleteGarbage(){
+    public int deleteGarbage(){
         log.info("/deleteGarbage");
         List<UserBot> garbage=  userController.getList().join().stream().filter(userBot -> !userBot.isActive() || userBot.getTrackList().size()==0).collect(Collectors.toList());
         garbage.parallelStream().forEach(userBot -> userController.delete(userBot.getId()));
         if (trackBot!=null) {
             trackBot.notifyAdmins("/user/deleteGarbage deleted: " + garbage.size());
         }
+        return garbage.size();
     }
 
     @GetMapping("/cnt")
