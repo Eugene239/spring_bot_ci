@@ -5,6 +5,7 @@
     <c:import url="common/head.jsp"/>
     <c:import url="common/scripts.jsp"/>
     <c:import url="common/navbar.jsp"/>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
 </head>
 <body>
 <div id="mapp">
@@ -20,7 +21,7 @@
                     </md-field>
                 </md-table-toolbar>
 
-                <md-table-empty-state v-if="!loaded" md-label="Searching">
+                <md-table-empty-state v-if="!loaded" md-label="Loading">
                     <md-progress-spinner v-if="!loaded" :md-diameter="150" :md-stroke="8" md-mode="indeterminate" style="margin: 1rem"/>
                 </md-table-empty-state>
 
