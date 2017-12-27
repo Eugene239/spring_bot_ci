@@ -4,10 +4,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.epavlov.bot.TrackBot;
 import ru.epavlov.entity.UserBot;
 import ru.epavlov.entity.UserController;
@@ -53,6 +50,14 @@ public class UserRest {
     @GetMapping("/cnt")
     public int size(){
         return userController.getList().join().size();
+    }
+
+    @GetMapping("/{id}")
+    public UserBot getUser(@PathVariable Long id){
+        log.info("getUser: "+id);
+        UserBot userBot= userController.get(id).join();
+        log.info(userBot);
+        return userBot;
     }
     @GetMapping("/top")
     public List<UserBot> getTop(){

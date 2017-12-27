@@ -39,6 +39,17 @@ public class Schedule {
     private void getStatistic(){
         trackController.getList().thenAcceptAsync(list->{
            controller.saveIfNotEquals(StatisticController.Stats.TRACKCNT,list.size());
+           list.forEach(track -> {
+               track.getUsers().values().parallelStream().forEach(id->{
+                   userController.get(id).thenAccept(userBot -> {
+                       if (userBot==null){
+                            log.info(track.getId()+ " bad user: "+id);
+                            track.getUsers().remove(id.toString());
+                            trackController.create(track);
+                       }
+                   });
+               });
+           });
         });
         userController.getList().thenAcceptAsync(list->
            controller.saveIfNotEquals(StatisticController.Stats.USERCNT,list.size())

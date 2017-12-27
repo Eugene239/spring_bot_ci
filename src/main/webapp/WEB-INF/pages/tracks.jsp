@@ -5,6 +5,7 @@
     <c:import url="common/head.jsp"/>
     <c:import url="common/scripts.jsp"/>
     <c:import url="common/navbar.jsp"/>
+    <c:import url="common/userTemplate.jsp"/>
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
 </head>
 <body>
@@ -35,7 +36,7 @@
                     <md-table-cell md-label="TIME" md-sort-by="time">{{ item.time }}</md-table-cell>
                     <md-table-cell md-label="USERS" md-sort-by="users" >
                         <div v-for="user in item.users">
-                            {{user}}
+                            <user-list :userId="user"></user-list>
                         </div>
                     </md-table-cell>
                 </md-table-row>
