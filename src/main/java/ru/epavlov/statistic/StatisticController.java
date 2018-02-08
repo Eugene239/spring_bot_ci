@@ -84,7 +84,7 @@ public class StatisticController {
                 });
                 log.debug("complete");
                 list.sort(StatValue::compare);
-                statisticCompletableFuture.complete(list.subList(list.size()-100,list.size()));
+                statisticCompletableFuture.complete(list.subList(list.size()>100?list.size()-100:0,list.size()));
             }
 
             @Override
